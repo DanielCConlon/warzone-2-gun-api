@@ -32,7 +32,7 @@ public class User implements Serializable {
     boolean loggedIn;
 
     @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<Classes> classes;
+    private List<WeaponClass> weaponClasses;
 
     @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Vote> votes;
@@ -43,12 +43,12 @@ public class User implements Serializable {
 //    Generate constructor, getters, setters, equals(), hasCode(), toString() methods
 
 
-    public User(Integer id, String username, String password, boolean loggedIn, List<Classes> classes, List<Vote> votes, List<Comment> comments) {
+    public User(Integer id, String username, String password, boolean loggedIn, List<WeaponClass> weaponClasses, List<Vote> votes, List<Comment> comments) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.loggedIn = loggedIn;
-        this.classes = classes;
+        this.weaponClasses = weaponClasses;
         this.votes = votes;
         this.comments = comments;
     }
@@ -85,12 +85,12 @@ public class User implements Serializable {
         this.loggedIn = loggedIn;
     }
 
-    public List<Classes> getClasses() {
-        return classes;
+    public List<WeaponClass> getWeaponClasses() {
+        return weaponClasses;
     }
 
-    public void setClasses(List<Classes> classes) {
-        this.classes = classes;
+    public void setWeaponClasses(List<WeaponClass> weaponClasses) {
+        this.weaponClasses = weaponClasses;
     }
 
     public List<Vote> getVotes() {
@@ -118,14 +118,14 @@ public class User implements Serializable {
                 Objects.equals(id, user.id) &&
                 Objects.equals(username, user.username) &&
                 Objects.equals(password, user.password) &&
-                Objects.equals(classes, user.classes) &&
+                Objects.equals(weaponClasses, user.weaponClasses) &&
                 Objects.equals(votes, user.votes) &&
                 Objects.equals(comments, user.comments);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, username, password, loggedIn, classes, votes, comments);
+        return Objects.hash(id, username, password, loggedIn, weaponClasses, votes, comments);
     }
 
     @Override
@@ -135,7 +135,7 @@ public class User implements Serializable {
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", loggedIn=" + loggedIn +
-                ", classes=" + classes +
+                ", weaponClasses=" + weaponClasses +
                 ", votes=" + votes +
                 ", comments=" + comments +
                 '}';
